@@ -1,14 +1,25 @@
-function Sidebar({ selectedFilter, onFilterChange }) {
+function Sidebar({
+  selectedFilter,
+  onFilterChange,
+  onPageChange,
+  currentPage,
+}) {
   const menuItems = [
-    { icon: "📋", label: "Все задачи" },
-    { icon: "⭐", label: "Важное" },
-    { icon: "✅", label: "Завершённые" },
-    { icon: "⚙️", label: "Настройки" },
+    { icon: "📋", label: "Все задачи", page: "tasks" },
+    { icon: "⭐", label: "Важное", page: "tasks" },
+    { icon: "✅", label: "Завершённые", page: "tasks" },
+    { icon: "👤", label: "Форма пользователя", page: "userform" },
+    { icon: "⚙️", label: "Настройки", page: "settings" },
   ];
 
-  const handleItemClick = (label) => {
+  const handleItemClick = (label, page) => {
     if (label !== "Настройки") {
-      onFilterChange(label);
+      if (page === "userform") {
+        onPageChange("userform");
+      } else {
+        onFilterChange(label);
+        onPageChange("tasks");
+      }
     }
   };
 
@@ -45,11 +56,15 @@ function Sidebar({ selectedFilter, onFilterChange }) {
         }}
       >
         {menuItems.map((item, index) => {
-          const isActive = selectedFilter === item.label;
+          const isActive =
+            (item.page === "userform" && currentPage === "userform") ||
+            (item.page === "tasks" &&
+              selectedFilter === item.label &&
+              currentPage === "tasks");
           return (
             <li
               key={index}
-              onClick={() => handleItemClick(item.label)}
+              onClick={() => handleItemClick(item.label, item.page)}
               style={{
                 padding: "12px 24px",
                 cursor: "pointer",

@@ -2,21 +2,23 @@ import { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import MainDashboard from "./components/MainDashboard";
+import UserForm from "./components/UserForm";
 import { tasks } from "./data/tasks";
 
 function App() {
   const [selectedFilter, setSelectedFilter] = useState("Все задачи");
+  const [currentPage, setCurrentPage] = useState("tasks");
+
+  // Объект соответствий фильтров - более компактный и читаемый подход
+  const filterConfig = {
+    "Все задачи": () => tasks,
+    Важное: () => tasks.filter((task) => task.priority === "Высокий"),
+    Завершённые: () => tasks.filter((task) => task.status === "Выполнено"),
+  };
 
   const filterTasks = (filter) => {
-    switch (filter) {
-      case "Важное":
-        return tasks.filter((task) => task.priority === "Высокий");
-      case "Завершённые":
-        return tasks.filter((task) => task.status === "Выполнено");
-      case "Все задачи":
-      default:
-        return tasks;
-    }
+    const filterFn = filterConfig[filter] || filterConfig["Все задачи"];
+    return filterFn();
   };
 
   const filteredTasks = filterTasks(selectedFilter);
@@ -32,6 +34,8 @@ function App() {
       <Sidebar
         selectedFilter={selectedFilter}
         onFilterChange={setSelectedFilter}
+        onPageChange={setCurrentPage}
+        currentPage={currentPage}
       />
       <div
         style={{
@@ -42,7 +46,11 @@ function App() {
         }}
       >
         <Header />
-        <MainDashboard tasks={filteredTasks} />
+        {currentPage === "userform" ? (
+          <UserForm />
+        ) : (
+          <MainDashboard tasks={filteredTasks} />
+        )}
       </div>
     </div>
   );

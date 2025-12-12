@@ -43,7 +43,7 @@ function TaskList({ tasks }) {
     return (
       <div className={styles.taskList}>
         <h2 className={styles.taskListTitle}>Список задач</h2>
-        <p className={styles.emptyState}>Задач пока нет</p>
+        <p className={styles.emptyState}>Нет задач</p>
       </div>
     );
   }
