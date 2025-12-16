@@ -8,6 +8,7 @@ function Sidebar({
     { icon: "📋", label: "Все задачи", page: "tasks" },
     { icon: "⭐", label: "Важное", page: "tasks" },
     { icon: "✅", label: "Завершённые", page: "tasks" },
+    { icon: "📌", label: "Доски", page: "boards" },
     { icon: "👤", label: "Форма пользователя", page: "userform" },
     { icon: "⚙️", label: "Настройки", page: "settings" },
   ];
@@ -16,6 +17,8 @@ function Sidebar({
     if (label !== "Настройки") {
       if (page === "userform") {
         onPageChange("userform");
+      } else if (page === "boards") {
+        onPageChange("boards");
       } else {
         onFilterChange(label);
         onPageChange("tasks");
@@ -58,6 +61,7 @@ function Sidebar({
         {menuItems.map((item, index) => {
           const isActive =
             (item.page === "userform" && currentPage === "userform") ||
+            (item.page === "boards" && currentPage === "boards") ||
             (item.page === "tasks" &&
               selectedFilter === item.label &&
               currentPage === "tasks");

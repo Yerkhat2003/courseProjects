@@ -3,13 +3,42 @@ import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import MainDashboard from "./components/MainDashboard";
 import UserForm from "./components/UserForm";
+import BoardsList from "./components/BoardsList";
 import { tasks } from "./data/tasks";
 
 function App() {
   const [selectedFilter, setSelectedFilter] = useState("Все задачи");
   const [currentPage, setCurrentPage] = useState("tasks");
+  
+  const [boards, setBoards] = useState([
+    {
+      id: 1,
+      title: "Учебная доска",
+      description: "Доска для заданий и конспектов по React",
+      createdAt: "2025-03-15",
+    },
+    {
+      id: 2,
+      title: "Рабочие задачи",
+      description: "Ежедневные задачи и проекты",
+      createdAt: "2025-03-10",
+    },
+    {
+      id: 3,
+      title: "Личные дела",
+      description: "Планы и напоминания",
+      createdAt: "2025-03-05",
+    },
+  ]);
 
-  // Объект соответствий фильтров - более компактный и читаемый подход
+  const addBoard = (newBoard) => {
+    setBoards((prevBoards) => [...prevBoards, newBoard]);
+  };
+
+  const deleteBoard = (id) => {
+    setBoards((prevBoards) => prevBoards.filter((board) => board.id !== id));
+  };
+
   const filterConfig = {
     "Все задачи": () => tasks,
     Важное: () => tasks.filter((task) => task.priority === "Высокий"),
@@ -48,6 +77,12 @@ function App() {
         <Header />
         {currentPage === "userform" ? (
           <UserForm />
+        ) : currentPage === "boards" ? (
+          <BoardsList
+            boards={boards}
+            onDeleteBoard={deleteBoard}
+            onAddBoard={addBoard}
+          />
         ) : (
           <MainDashboard tasks={filteredTasks} />
         )}

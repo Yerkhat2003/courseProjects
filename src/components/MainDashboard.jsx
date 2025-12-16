@@ -10,7 +10,6 @@ function MainDashboard({ tasks }) {
         minHeight: "calc(100vh - 100px)",
       }}
     >
-      {/* Передаём отфильтрованный массив задач в компонент через props */}
       <TaskList tasks={tasks} />
     </main>
   );

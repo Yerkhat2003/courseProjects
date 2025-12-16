@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 function UserForm() {
-  // Отдельные useState для каждого поля
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [birthDate, setBirthDate] = useState("");
@@ -61,7 +60,6 @@ function UserForm() {
           gap: "28px",
         }}
       >
-        {/* Имя и Email в два столбца */}
         <div
           style={{
             display: "grid",
@@ -69,7 +67,6 @@ function UserForm() {
             gap: "24px",
           }}
         >
-          {/* Имя */}
           <div>
             <label
               htmlFor="name"
@@ -112,7 +109,6 @@ function UserForm() {
             />
           </div>
 
-          {/* Email */}
           <div>
             <label
               htmlFor="email"
@@ -156,7 +152,6 @@ function UserForm() {
           </div>
         </div>
 
-        {/* Дата рождения и Пол в два столбца */}
         <div
           style={{
             display: "grid",
@@ -164,7 +159,6 @@ function UserForm() {
             gap: "24px",
           }}
         >
-          {/* Дата рождения */}
           <div>
             <label
               htmlFor="birthDate"
@@ -207,7 +201,6 @@ function UserForm() {
             />
           </div>
 
-          {/* Пол - Radio buttons */}
           <div>
             <label
               style={{
@@ -329,7 +322,6 @@ function UserForm() {
           </div>
         </div>
 
-        {/* Страна и Город в два столбца */}
         <div
           style={{
             display: "grid",
@@ -337,7 +329,6 @@ function UserForm() {
             gap: "24px",
           }}
         >
-          {/* Страна - Select */}
           <div>
             <label
               htmlFor="country"
@@ -385,7 +376,6 @@ function UserForm() {
             </select>
           </div>
 
-          {/* Город */}
           <div>
             <label
               htmlFor="city"
@@ -430,7 +420,6 @@ function UserForm() {
         </div>
       </form>
 
-      {/* Вывод введенных данных */}
       <div
         style={{
           marginTop: "48px",
