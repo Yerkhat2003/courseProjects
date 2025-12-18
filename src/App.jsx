@@ -9,7 +9,7 @@ import { tasks } from "./data/tasks";
 function App() {
   const [selectedFilter, setSelectedFilter] = useState("Все задачи");
   const [currentPage, setCurrentPage] = useState("tasks");
-  
+
   const [boards, setBoards] = useState([
     {
       id: 1,
@@ -53,28 +53,15 @@ function App() {
   const filteredTasks = filterTasks(selectedFilter);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        minHeight: "100vh",
-        backgroundColor: "#f5f7fa",
-      }}
-    >
+    <div className="flex min-h-screen bg-gray-50">
       <Sidebar
         selectedFilter={selectedFilter}
         onFilterChange={setSelectedFilter}
         onPageChange={setCurrentPage}
         currentPage={currentPage}
       />
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "100vh",
-        }}
-      >
-        <Header />
+      <div className="flex-1 flex flex-col min-h-screen">
+        <Header currentPage={currentPage} onPageChange={setCurrentPage} />
         {currentPage === "userform" ? (
           <UserForm />
         ) : currentPage === "boards" ? (
@@ -84,7 +71,7 @@ function App() {
             onAddBoard={addBoard}
           />
         ) : (
-          <MainDashboard tasks={filteredTasks} />
+          <MainDashboard tasks={filteredTasks} boards={boards} />
         )}
       </div>
     </div>

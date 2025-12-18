@@ -27,37 +27,11 @@ function Sidebar({
   };
 
   return (
-    <aside
-      style={{
-        width: "260px",
-        backgroundColor: "#ffffff",
-        padding: "24px 0",
-        borderRight: "1px solid #e5e7eb",
-        minHeight: "100vh",
-        boxSizing: "border-box",
-        boxShadow: "2px 0 8px rgba(0, 0, 0, 0.04)",
-      }}
-    >
-      <h2
-        style={{
-          fontSize: "12px",
-          fontWeight: "600",
-          textTransform: "uppercase",
-          letterSpacing: "1px",
-          color: "#6b7280",
-          padding: "0 24px",
-          marginBottom: "16px",
-        }}
-      >
+    <aside className="w-[260px] bg-white py-6 border-r border-gray-200 min-h-screen box-border shadow-sm">
+      <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-500 px-6 mb-4">
         Меню
       </h2>
-      <ul
-        style={{
-          listStyle: "none",
-          padding: 0,
-          margin: 0,
-        }}
-      >
+      <ul className="list-none p-0 m-0">
         {menuItems.map((item, index) => {
           const isActive =
             (item.page === "userform" && currentPage === "userform") ||
@@ -69,41 +43,19 @@ function Sidebar({
             <li
               key={index}
               onClick={() => handleItemClick(item.label, item.page)}
-              style={{
-                padding: "12px 24px",
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-                borderLeft: `3px solid ${isActive ? "#667eea" : "transparent"}`,
-                marginBottom: "4px",
-                backgroundColor: isActive ? "#f3f4f6" : "transparent",
-              }}
-              onMouseEnter={(e) => {
-                if (!isActive) {
-                  e.currentTarget.style.backgroundColor = "#f3f4f6";
-                  e.currentTarget.style.borderLeftColor = "#667eea";
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!isActive) {
-                  e.currentTarget.style.backgroundColor = "transparent";
-                  e.currentTarget.style.borderLeftColor = "transparent";
-                }
-              }}
+              className={`py-3 px-6 cursor-pointer transition-all duration-200 mb-1 ${
+                isActive
+                  ? "bg-gray-100 border-l-4 border-indigo-500"
+                  : "border-l-4 border-transparent hover:bg-gray-100 hover:border-l-4 hover:border-indigo-500"
+              }`}
             >
+              <span className="mr-3 text-lg">{item.icon}</span>
               <span
-                style={{
-                  marginRight: "12px",
-                  fontSize: "18px",
-                }}
-              >
-                {item.icon}
-              </span>
-              <span
-                style={{
-                  fontSize: "15px",
-                  fontWeight: isActive ? "600" : "500",
-                  color: isActive ? "#667eea" : "#1f2937",
-                }}
+                className={`text-[15px] ${
+                  isActive
+                    ? "font-semibold text-indigo-500"
+                    : "font-medium text-gray-800"
+                }`}
               >
                 {item.label}
               </span>

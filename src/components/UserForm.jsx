@@ -9,74 +9,22 @@ function UserForm() {
   const [city, setCity] = useState("");
 
   return (
-    <div
-      style={{
-        width: "100%",
-        maxWidth: "1000px",
-        margin: "0 auto",
-        padding: "48px 64px",
-        backgroundColor: "white",
-        borderRadius: "16px",
-        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.12)",
-        minHeight: "calc(100vh - 100px)",
-      }}
-    >
-      <div
-        style={{
-          background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-          padding: "32px 40px",
-          borderRadius: "12px",
-          marginBottom: "40px",
-          color: "white",
-        }}
-      >
-        <h2
-          style={{
-            fontSize: "32px",
-            fontWeight: "700",
-            marginBottom: "8px",
-            color: "white",
-            letterSpacing: "-0.5px",
-          }}
-        >
+    <div className="w-full max-w-[1000px] mx-auto py-12 px-16 bg-white rounded-2xl shadow-xl min-h-[calc(100vh-100px)]">
+      <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-8 rounded-xl mb-10 text-white">
+        <h2 className="text-3xl font-bold mb-2 text-white tracking-tight">
           Форма пользователя
         </h2>
-        <p
-          style={{
-            fontSize: "16px",
-            opacity: 0.9,
-            fontWeight: "400",
-            margin: 0,
-          }}
-        >
+        <p className="text-base opacity-90 font-normal m-0">
           Заполните свои данные
         </p>
       </div>
 
-      <form
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "28px",
-        }}
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "24px",
-          }}
-        >
+      <form className="flex flex-col gap-7">
+        <div className="grid grid-cols-2 gap-6">
           <div>
             <label
               htmlFor="name"
-              style={{
-                display: "block",
-                marginBottom: "10px",
-                fontSize: "15px",
-                fontWeight: "600",
-                color: "#374151",
-              }}
+              className="block mb-2.5 text-[15px] font-semibold text-gray-700"
             >
               Имя
             </label>
@@ -86,39 +34,14 @@ function UserForm() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Введите ваше имя"
-              style={{
-                width: "100%",
-                padding: "14px 16px",
-                fontSize: "16px",
-                border: "2px solid #e5e7eb",
-                borderRadius: "8px",
-                outline: "none",
-                transition: "all 0.3s ease",
-                backgroundColor: "#fafafa",
-              }}
-              onFocus={(e) => {
-                e.target.style.borderColor = "#667eea";
-                e.target.style.backgroundColor = "white";
-                e.target.style.boxShadow = "0 0 0 3px rgba(102, 126, 234, 0.1)";
-              }}
-              onBlur={(e) => {
-                e.target.style.borderColor = "#e5e7eb";
-                e.target.style.backgroundColor = "#fafafa";
-                e.target.style.boxShadow = "none";
-              }}
+              className="w-full py-3.5 px-4 text-base border-2 border-gray-200 rounded-lg outline-none transition-all duration-300 bg-gray-50 focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-100"
             />
           </div>
 
           <div>
             <label
               htmlFor="email"
-              style={{
-                display: "block",
-                marginBottom: "10px",
-                fontSize: "15px",
-                fontWeight: "600",
-                color: "#374151",
-              }}
+              className="block mb-2.5 text-[15px] font-semibold text-gray-700"
             >
               Email
             </label>
@@ -128,47 +51,16 @@ function UserForm() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="example@email.com"
-              style={{
-                width: "100%",
-                padding: "14px 16px",
-                fontSize: "16px",
-                border: "2px solid #e5e7eb",
-                borderRadius: "8px",
-                outline: "none",
-                transition: "all 0.3s ease",
-                backgroundColor: "#fafafa",
-              }}
-              onFocus={(e) => {
-                e.target.style.borderColor = "#667eea";
-                e.target.style.backgroundColor = "white";
-                e.target.style.boxShadow = "0 0 0 3px rgba(102, 126, 234, 0.1)";
-              }}
-              onBlur={(e) => {
-                e.target.style.borderColor = "#e5e7eb";
-                e.target.style.backgroundColor = "#fafafa";
-                e.target.style.boxShadow = "none";
-              }}
+              className="w-full py-3.5 px-4 text-base border-2 border-gray-200 rounded-lg outline-none transition-all duration-300 bg-gray-50 focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-100"
             />
           </div>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "24px",
-          }}
-        >
+        <div className="grid grid-cols-2 gap-6">
           <div>
             <label
               htmlFor="birthDate"
-              style={{
-                display: "block",
-                marginBottom: "10px",
-                fontSize: "15px",
-                fontWeight: "600",
-                color: "#374151",
-              }}
+              className="block mb-2.5 text-[15px] font-semibold text-gray-700"
             >
               Дата рождения
             </label>
@@ -177,79 +69,21 @@ function UserForm() {
               type="date"
               value={birthDate}
               onChange={(e) => setBirthDate(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "14px 16px",
-                fontSize: "16px",
-                border: "2px solid #e5e7eb",
-                borderRadius: "8px",
-                outline: "none",
-                transition: "all 0.3s ease",
-                backgroundColor: "#fafafa",
-                cursor: "pointer",
-              }}
-              onFocus={(e) => {
-                e.target.style.borderColor = "#667eea";
-                e.target.style.backgroundColor = "white";
-                e.target.style.boxShadow = "0 0 0 3px rgba(102, 126, 234, 0.1)";
-              }}
-              onBlur={(e) => {
-                e.target.style.borderColor = "#e5e7eb";
-                e.target.style.backgroundColor = "#fafafa";
-                e.target.style.boxShadow = "none";
-              }}
+              className="w-full py-3.5 px-4 text-base border-2 border-gray-200 rounded-lg outline-none transition-all duration-300 bg-gray-50 cursor-pointer focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-100"
             />
           </div>
 
           <div>
-            <label
-              style={{
-                display: "block",
-                marginBottom: "10px",
-                fontSize: "15px",
-                fontWeight: "600",
-                color: "#374151",
-              }}
-            >
+            <label className="block mb-2.5 text-[15px] font-semibold text-gray-700">
               Пол
             </label>
-            <div
-              style={{
-                display: "flex",
-                gap: "24px",
-                marginTop: "8px",
-              }}
-            >
+            <div className="flex gap-6 mt-2">
               <label
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  cursor: "pointer",
-                  fontSize: "16px",
-                  padding: "12px 20px",
-                  borderRadius: "8px",
-                  border: `2px solid ${
-                    gender === "Male" ? "#667eea" : "#e5e7eb"
-                  }`,
-                  backgroundColor:
-                    gender === "Male" ? "#f0f4ff" : "transparent",
-                  transition: "all 0.2s ease",
-                  flex: 1,
-                  justifyContent: "center",
-                }}
-                onMouseEnter={(e) => {
-                  if (gender !== "Male") {
-                    e.currentTarget.style.borderColor = "#c7d2fe";
-                    e.currentTarget.style.backgroundColor = "#f9fafb";
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (gender !== "Male") {
-                    e.currentTarget.style.borderColor = "#e5e7eb";
-                    e.currentTarget.style.backgroundColor = "transparent";
-                  }
-                }}
+                className={`flex items-center gap-2.5 cursor-pointer text-base py-3 px-5 rounded-lg border-2 transition-all duration-200 flex-1 justify-center ${
+                  gender === "Male"
+                    ? "border-indigo-500 bg-indigo-50"
+                    : "border-gray-200 hover:border-indigo-300 hover:bg-gray-50"
+                }`}
               >
                 <input
                   type="radio"
@@ -257,47 +91,22 @@ function UserForm() {
                   value="Male"
                   checked={gender === "Male"}
                   onChange={(e) => setGender(e.target.value)}
-                  style={{
-                    width: "20px",
-                    height: "20px",
-                    cursor: "pointer",
-                    accentColor: "#667eea",
-                  }}
+                  className="w-5 h-5 cursor-pointer accent-indigo-500"
                 />
-                <span style={{ fontWeight: gender === "Male" ? "600" : "400" }}>
+                <span
+                  className={
+                    gender === "Male" ? "font-semibold" : "font-normal"
+                  }
+                >
                   Male
                 </span>
               </label>
               <label
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  cursor: "pointer",
-                  fontSize: "16px",
-                  padding: "12px 20px",
-                  borderRadius: "8px",
-                  border: `2px solid ${
-                    gender === "Female" ? "#667eea" : "#e5e7eb"
-                  }`,
-                  backgroundColor:
-                    gender === "Female" ? "#f0f4ff" : "transparent",
-                  transition: "all 0.2s ease",
-                  flex: 1,
-                  justifyContent: "center",
-                }}
-                onMouseEnter={(e) => {
-                  if (gender !== "Female") {
-                    e.currentTarget.style.borderColor = "#c7d2fe";
-                    e.currentTarget.style.backgroundColor = "#f9fafb";
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (gender !== "Female") {
-                    e.currentTarget.style.borderColor = "#e5e7eb";
-                    e.currentTarget.style.backgroundColor = "transparent";
-                  }
-                }}
+                className={`flex items-center gap-2.5 cursor-pointer text-base py-3 px-5 rounded-lg border-2 transition-all duration-200 flex-1 justify-center ${
+                  gender === "Female"
+                    ? "border-indigo-500 bg-indigo-50"
+                    : "border-gray-200 hover:border-indigo-300 hover:bg-gray-50"
+                }`}
               >
                 <input
                   type="radio"
@@ -305,15 +114,12 @@ function UserForm() {
                   value="Female"
                   checked={gender === "Female"}
                   onChange={(e) => setGender(e.target.value)}
-                  style={{
-                    width: "20px",
-                    height: "20px",
-                    cursor: "pointer",
-                    accentColor: "#667eea",
-                  }}
+                  className="w-5 h-5 cursor-pointer accent-indigo-500"
                 />
                 <span
-                  style={{ fontWeight: gender === "Female" ? "600" : "400" }}
+                  className={
+                    gender === "Female" ? "font-semibold" : "font-normal"
+                  }
                 >
                   Female
                 </span>
@@ -322,23 +128,11 @@ function UserForm() {
           </div>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "24px",
-          }}
-        >
+        <div className="grid grid-cols-2 gap-6">
           <div>
             <label
               htmlFor="country"
-              style={{
-                display: "block",
-                marginBottom: "10px",
-                fontSize: "15px",
-                fontWeight: "600",
-                color: "#374151",
-              }}
+              className="block mb-2.5 text-[15px] font-semibold text-gray-700"
             >
               Страна
             </label>
@@ -346,27 +140,7 @@ function UserForm() {
               id="country"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "14px 16px",
-                fontSize: "16px",
-                border: "2px solid #e5e7eb",
-                borderRadius: "8px",
-                outline: "none",
-                backgroundColor: "#fafafa",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-              }}
-              onFocus={(e) => {
-                e.target.style.borderColor = "#667eea";
-                e.target.style.backgroundColor = "white";
-                e.target.style.boxShadow = "0 0 0 3px rgba(102, 126, 234, 0.1)";
-              }}
-              onBlur={(e) => {
-                e.target.style.borderColor = "#e5e7eb";
-                e.target.style.backgroundColor = "#fafafa";
-                e.target.style.boxShadow = "none";
-              }}
+              className="w-full py-3.5 px-4 text-base border-2 border-gray-200 rounded-lg outline-none bg-gray-50 cursor-pointer transition-all duration-300 focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-100"
             >
               <option value="">Выберите страну</option>
               <option value="Kazakhstan">Kazakhstan</option>
@@ -379,13 +153,7 @@ function UserForm() {
           <div>
             <label
               htmlFor="city"
-              style={{
-                display: "block",
-                marginBottom: "10px",
-                fontSize: "15px",
-                fontWeight: "600",
-                color: "#374151",
-              }}
+              className="block mb-2.5 text-[15px] font-semibold text-gray-700"
             >
               Город
             </label>
@@ -395,239 +163,63 @@ function UserForm() {
               value={city}
               onChange={(e) => setCity(e.target.value)}
               placeholder="Введите название города"
-              style={{
-                width: "100%",
-                padding: "14px 16px",
-                fontSize: "16px",
-                border: "2px solid #e5e7eb",
-                borderRadius: "8px",
-                outline: "none",
-                transition: "all 0.3s ease",
-                backgroundColor: "#fafafa",
-              }}
-              onFocus={(e) => {
-                e.target.style.borderColor = "#667eea";
-                e.target.style.backgroundColor = "white";
-                e.target.style.boxShadow = "0 0 0 3px rgba(102, 126, 234, 0.1)";
-              }}
-              onBlur={(e) => {
-                e.target.style.borderColor = "#e5e7eb";
-                e.target.style.backgroundColor = "#fafafa";
-                e.target.style.boxShadow = "none";
-              }}
+              className="w-full py-3.5 px-4 text-base border-2 border-gray-200 rounded-lg outline-none transition-all duration-300 bg-gray-50 focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-100"
             />
           </div>
         </div>
       </form>
 
-      <div
-        style={{
-          marginTop: "48px",
-          padding: "32px 40px",
-          background: "linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)",
-          borderRadius: "12px",
-          border: "2px solid #e5e7eb",
-          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
-        }}
-      >
-        <h3
-          style={{
-            fontSize: "22px",
-            fontWeight: "700",
-            marginBottom: "24px",
-            color: "#1f2937",
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
-          }}
-        >
-          <span style={{ fontSize: "24px" }}>📋</span>
+      <div className="mt-12 p-8 bg-gradient-to-br from-gray-50 to-white rounded-xl border-2 border-gray-200 shadow-sm">
+        <h3 className="text-xl font-bold mb-6 text-gray-800 flex items-center gap-3">
+          <span className="text-2xl">📋</span>
           Введенные данные
         </h3>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "20px",
-          }}
-        >
-          <div
-            style={{
-              padding: "16px 20px",
-              backgroundColor: "white",
-              borderRadius: "8px",
-              border: "1px solid #e5e7eb",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "13px",
-                fontWeight: "600",
-                color: "#6b7280",
-                textTransform: "uppercase",
-                letterSpacing: "0.5px",
-                marginBottom: "6px",
-              }}
-            >
+        <div className="grid grid-cols-2 gap-5">
+          <div className="p-4 bg-white rounded-lg border border-gray-200">
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">
               Имя
             </div>
-            <div
-              style={{
-                fontSize: "18px",
-                fontWeight: "500",
-                color: "#1f2937",
-              }}
-            >
+            <div className="text-lg font-medium text-gray-800">
               {name || "—"}
             </div>
           </div>
-          <div
-            style={{
-              padding: "16px 20px",
-              backgroundColor: "white",
-              borderRadius: "8px",
-              border: "1px solid #e5e7eb",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "13px",
-                fontWeight: "600",
-                color: "#6b7280",
-                textTransform: "uppercase",
-                letterSpacing: "0.5px",
-                marginBottom: "6px",
-              }}
-            >
+          <div className="p-4 bg-white rounded-lg border border-gray-200">
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">
               Email
             </div>
-            <div
-              style={{
-                fontSize: "18px",
-                fontWeight: "500",
-                color: "#1f2937",
-              }}
-            >
+            <div className="text-lg font-medium text-gray-800">
               {email || "—"}
             </div>
           </div>
-          <div
-            style={{
-              padding: "16px 20px",
-              backgroundColor: "white",
-              borderRadius: "8px",
-              border: "1px solid #e5e7eb",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "13px",
-                fontWeight: "600",
-                color: "#6b7280",
-                textTransform: "uppercase",
-                letterSpacing: "0.5px",
-                marginBottom: "6px",
-              }}
-            >
+          <div className="p-4 bg-white rounded-lg border border-gray-200">
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">
               Дата рождения
             </div>
-            <div
-              style={{
-                fontSize: "18px",
-                fontWeight: "500",
-                color: "#1f2937",
-              }}
-            >
+            <div className="text-lg font-medium text-gray-800">
               {birthDate || "—"}
             </div>
           </div>
-          <div
-            style={{
-              padding: "16px 20px",
-              backgroundColor: "white",
-              borderRadius: "8px",
-              border: "1px solid #e5e7eb",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "13px",
-                fontWeight: "600",
-                color: "#6b7280",
-                textTransform: "uppercase",
-                letterSpacing: "0.5px",
-                marginBottom: "6px",
-              }}
-            >
+          <div className="p-4 bg-white rounded-lg border border-gray-200">
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">
               Пол
             </div>
-            <div
-              style={{
-                fontSize: "18px",
-                fontWeight: "500",
-                color: "#1f2937",
-              }}
-            >
+            <div className="text-lg font-medium text-gray-800">
               {gender || "—"}
             </div>
           </div>
-          <div
-            style={{
-              padding: "16px 20px",
-              backgroundColor: "white",
-              borderRadius: "8px",
-              border: "1px solid #e5e7eb",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "13px",
-                fontWeight: "600",
-                color: "#6b7280",
-                textTransform: "uppercase",
-                letterSpacing: "0.5px",
-                marginBottom: "6px",
-              }}
-            >
+          <div className="p-4 bg-white rounded-lg border border-gray-200">
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">
               Страна
             </div>
-            <div
-              style={{
-                fontSize: "18px",
-                fontWeight: "500",
-                color: "#1f2937",
-              }}
-            >
+            <div className="text-lg font-medium text-gray-800">
               {country || "—"}
             </div>
           </div>
-          <div
-            style={{
-              padding: "16px 20px",
-              backgroundColor: "white",
-              borderRadius: "8px",
-              border: "1px solid #e5e7eb",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "13px",
-                fontWeight: "600",
-                color: "#6b7280",
-                textTransform: "uppercase",
-                letterSpacing: "0.5px",
-                marginBottom: "6px",
-              }}
-            >
+          <div className="p-4 bg-white rounded-lg border border-gray-200">
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">
               Город
             </div>
-            <div
-              style={{
-                fontSize: "18px",
-                fontWeight: "500",
-                color: "#1f2937",
-              }}
-            >
+            <div className="text-lg font-medium text-gray-800">
               {city || "—"}
             </div>
           </div>
