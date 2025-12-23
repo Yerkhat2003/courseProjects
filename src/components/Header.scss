@@ -1,0 +1,88 @@
+
+$header-bg: #1e293b;
+$text-white: #ffffff;
+$text-gray: #d1d5db;
+$active-bg: #334155;
+$hover-bg: #334155;
+$border-color: #475569;
+
+
+@mixin nav-button {
+  transition: all 0.2s ease;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+@mixin nav-button-active {
+  color: $text-white;
+  background-color: $active-bg;
+}
+
+@mixin nav-button-hover {
+  &:hover {
+    color: $text-white;
+    background-color: $hover-bg;
+  }
+}
+
+.header {
+  background-color: $header-bg;
+  color: $text-white;
+  padding: 0.75rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      .brand-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .brand-subtitle {
+        color: $text-gray;
+        font-size: 0.875rem;
+      }
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      .nav-button {
+        @include nav-button;
+        @include nav-button-hover;
+
+        &.active {
+          @include nav-button-active;
+        }
+
+        &.profile-button {
+          padding: 0.5rem 1rem;
+          border: 1px solid $border-color;
+
+          &.active {
+            border-color: #64748b;
+          }
+
+          &:hover {
+            border-color: #64748b;
+          }
+        }
+      }
+    }
+  }
+}
+
