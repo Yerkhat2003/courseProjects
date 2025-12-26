@@ -1,34 +1,28 @@
+import { useTranslation } from 'react-i18next';
 import TaskList from "./TaskList";
+import BoardCard from "./BoardCard";
 
-function MainDashboard({ tasks, boards }) {
+function MainDashboard({ tasks, boards, selectedFilter, onToggleStatus, onAddTask, onArchiveTask, onUpdateTask, onUpdateBoard, onSelectBoard, boardsList, onCompleteBoard, allTasks, darkMode, onDuplicateTask }) {
+  const { t } = useTranslation();
+  const shouldShowBoards = selectedFilter === "allTasks";
+
   return (
-    <main className="p-8 bg-gray-50 flex-1 min-h-[calc(100vh-100px)]">
-      {boards && boards.length > 0 ? (
+    <main className={`p-4 sm:p-6 md:p-8 flex-1 min-h-[calc(100vh-100px)] overflow-x-hidden w-full max-w-full transition-colors duration-200 ${
+      darkMode ? "bg-gray-900" : "bg-gray-50"
+    }`}>
+      {shouldShowBoards && boards && boards.length > 0 ? (
         <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">Мои доски</h2>
+          <h2 className={`text-2xl font-bold mb-6 ${darkMode ? "text-gray-100" : "text-gray-800"}`}>{t('boards.myBoards')}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {boards.map((board) => (
-              <div
-                key={board.id}
-                className="bg-slate-800 border border-slate-700 rounded-xl p-6 flex flex-col hover:border-blue-500 hover:shadow-lg transition-all duration-200 cursor-pointer"
-              >
-                <h3 className="text-white text-xl font-semibold mb-2">
-                  {board.title}
-                </h3>
-                <p className="text-gray-300 text-sm mb-4 flex-grow">
-                  {board.description}
-                </p>
-                {board.createdAt && (
-                  <span className="text-gray-400 text-xs">
-                    Создано: {board.createdAt}
-                  </span>
-                )}
-              </div>
-            ))}
+            {boards
+              .filter((board) => board.status === t('boards.active') || board.status === "активная")
+              .map((board) => (
+                <BoardCard key={board.id} board={board} onToggleStatus={onToggleStatus} onSelect={onSelectBoard} onCompleteBoard={onCompleteBoard} tasks={allTasks || []} darkMode={darkMode} />
+              ))}
           </div>
         </div>
       ) : null}
-      {tasks && <TaskList tasks={tasks} />}
+      {tasks && <TaskList tasks={tasks} onAddTask={onAddTask} onArchiveTask={onArchiveTask} onUpdateTask={onUpdateTask} boards={boardsList} showFilters={shouldShowBoards} darkMode={darkMode} onDuplicateTask={onDuplicateTask} />}
     </main>
   );
 }
