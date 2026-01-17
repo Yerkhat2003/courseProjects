@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BoardsController = void 0;
 const common_1 = require("@nestjs/common");
 const boards_service_1 = require("./boards.service");
+const create_board_dto_1 = require("./dto/create-board.dto");
 let BoardsController = class BoardsController {
     boardsService;
     constructor(boardsService) {
@@ -23,17 +24,8 @@ let BoardsController = class BoardsController {
     getBoards() {
         return this.boardsService.findAll();
     }
-    getBoard(id) {
-        return this.boardsService.findOne(+id);
-    }
     createBoard(createBoardDto) {
-        return this.boardsService.create(createBoardDto);
-    }
-    updateBoard(id, updateBoardDto) {
-        return this.boardsService.update(+id, updateBoardDto);
-    }
-    deleteBoard(id) {
-        this.boardsService.remove(+id);
+        return this.boardsService.create(createBoardDto.title);
     }
 };
 exports.BoardsController = BoardsController;
@@ -44,36 +36,13 @@ __decorate([
     __metadata("design:returntype", Array)
 ], BoardsController.prototype, "getBoards", null);
 __decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", Object)
-], BoardsController.prototype, "getBoard", null);
-__decorate([
     (0, common_1.Post)(),
     (0, common_1.HttpCode)(common_1.HttpStatus.CREATED),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [create_board_dto_1.CreateBoardDto]),
     __metadata("design:returntype", Object)
 ], BoardsController.prototype, "createBoard", null);
-__decorate([
-    (0, common_1.Put)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
-    __metadata("design:returntype", Object)
-], BoardsController.prototype, "updateBoard", null);
-__decorate([
-    (0, common_1.Delete)(':id'),
-    (0, common_1.HttpCode)(common_1.HttpStatus.NO_CONTENT),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], BoardsController.prototype, "deleteBoard", null);
 exports.BoardsController = BoardsController = __decorate([
     (0, common_1.Controller)('boards'),
     __metadata("design:paramtypes", [boards_service_1.BoardsService])
