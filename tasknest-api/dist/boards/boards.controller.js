@@ -16,6 +16,7 @@ exports.BoardsController = void 0;
 const common_1 = require("@nestjs/common");
 const boards_service_1 = require("./boards.service");
 const create_board_dto_1 = require("./dto/create-board.dto");
+const update_board_dto_1 = require("./dto/update-board.dto");
 let BoardsController = class BoardsController {
     boardsService;
     constructor(boardsService) {
@@ -26,6 +27,12 @@ let BoardsController = class BoardsController {
     }
     createBoard(createBoardDto) {
         return this.boardsService.create(createBoardDto.title);
+    }
+    updateBoard(id, updateBoardDto) {
+        return this.boardsService.update(id, updateBoardDto.title);
+    }
+    removeBoard(id) {
+        return this.boardsService.remove(id);
     }
 };
 exports.BoardsController = BoardsController;
@@ -43,6 +50,22 @@ __decorate([
     __metadata("design:paramtypes", [create_board_dto_1.CreateBoardDto]),
     __metadata("design:returntype", Object)
 ], BoardsController.prototype, "createBoard", null);
+__decorate([
+    (0, common_1.Patch)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, update_board_dto_1.UpdateBoardDto]),
+    __metadata("design:returntype", Object)
+], BoardsController.prototype, "updateBoard", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    (0, common_1.HttpCode)(common_1.HttpStatus.OK),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Object)
+], BoardsController.prototype, "removeBoard", null);
 exports.BoardsController = BoardsController = __decorate([
     (0, common_1.Controller)('boards'),
     __metadata("design:paramtypes", [boards_service_1.BoardsService])
